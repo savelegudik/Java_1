@@ -30,7 +30,7 @@ public class Field {
                 break;
 
             } else {
-                if (checkColumnForFullness(field[0][a - 1])) {
+                if (checkColumnForFullness(field[0][a - 1])) { //mistake!!!!!!!
                     break;
                 }
             }
@@ -39,15 +39,24 @@ public class Field {
         return field;
     }
 
+    public boolean checkColumnForFullness(Piece piece) {
+        if (piece == Piece.X || piece == Piece.Y) {
+            System.out.println();
+            System.out.println("Insert in another column!");
+            System.out.println();
+            return true;
+        }
+        return false;
+    }
+
     public Piece checkWinByColumn(Piece[][] arr) {
         boolean victoryX = false;
         boolean victoryY = false;
         int score = 1;
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1; j++) {
+            for (int j = 0; j < arr.length; j++) {
                 if ((field[i][j] == field[i + 1][j]) && (field[i][j] == Piece.X)) {
                     score++;
-                    System.out.println("Row = " + (i + 1) + "|Column = " + (j + 1));
                 }
             }
         }
@@ -56,7 +65,7 @@ public class Field {
         }
         score = 1;
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - 1; j++) {
+            for (int j = 0; j < arr.length; j++) {
                 if ((field[i][j] == field[i + 1][j]) && (field[i][j] == Piece.Y)) {
                     score++;
                 }
@@ -78,11 +87,10 @@ public class Field {
         boolean victoryX = false;
         boolean victoryY = false;
         int score = 1;
-        for (int i = 0; i < arr.length - 1; i++) {
+        for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length - 1; j++) {
                 if ((field[i][j] == field[i][j + 1]) && (field[i][j] == Piece.X)) {
                     score++;
-                    System.out.println("Row = " + (i + 1) + "|Column = " + (j + 1));
                 }
             }
         }
@@ -90,7 +98,7 @@ public class Field {
             victoryX = true;
         }
         score = 1;
-        for (int i = 0; i < arr.length - 1; i++) {
+        for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length - 1; j++) {
                 if ((field[i][j] == field[i][j + 1]) && (field[i][j] == Piece.Y)) {
                     score++;
@@ -142,14 +150,4 @@ public class Field {
 //        }
 //        return winPiece;
 //    }
-
-    public boolean checkColumnForFullness(Piece piece) {
-        if (piece == Piece.X || piece == Piece.Y) {
-            System.out.println();
-            System.out.println("Insert in another column!");
-            System.out.println();
-            return true;
-        }
-        return false;
-    }
 }

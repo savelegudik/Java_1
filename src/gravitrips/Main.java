@@ -22,6 +22,6 @@ public class Main {
 
         System.out.println();
 
-        game.gameOver(field, arr, firstPlayer, secondPlayer, currentPlayer);
+        game.playing(field, arr, firstPlayer, secondPlayer, currentPlayer);
     }
 }
