@@ -54,6 +54,7 @@ public class Field {
         boolean victoryY = false;
         int score = 1;
         for (int i = 0; i < arr.length - 1; i++) {
+            score = 1;
             for (int j = 0; j < arr.length; j++) {
                 if ((field[i][j] == field[i + 1][j]) && (field[i][j] == Piece.X)) {
                     score++;
@@ -65,6 +66,7 @@ public class Field {
         }
         score = 1;
         for (int i = 0; i < arr.length - 1; i++) {
+            score = 1;
             for (int j = 0; j < arr.length; j++) {
                 if ((field[i][j] == field[i + 1][j]) && (field[i][j] == Piece.Y)) {
                     score++;
@@ -88,6 +90,7 @@ public class Field {
         boolean victoryY = false;
         int score = 1;
         for (int i = 0; i < arr.length; i++) {
+            score = 1;
             for (int j = 0; j < arr.length - 1; j++) {
                 if ((field[i][j] == field[i][j + 1]) && (field[i][j] == Piece.X)) {
                     score++;
@@ -99,6 +102,7 @@ public class Field {
         }
         score = 1;
         for (int i = 0; i < arr.length; i++) {
+            score = 1;
             for (int j = 0; j < arr.length - 1; j++) {
                 if ((field[i][j] == field[i][j + 1]) && (field[i][j] == Piece.Y)) {
                     score++;
