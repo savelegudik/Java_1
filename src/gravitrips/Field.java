@@ -54,10 +54,11 @@ public class Field {
         boolean victoryY = false;
         int score = 1;
         for (int i = 0; i < arr.length - 1; i++) {
-            score = 1;
             for (int j = 0; j < arr.length; j++) {
                 if ((field[i][j] == field[i + 1][j]) && (field[i][j] == Piece.X)) {
                     score++;
+                } else {
+                    score = 1;
                 }
             }
         }
@@ -66,10 +67,11 @@ public class Field {
         }
         score = 1;
         for (int i = 0; i < arr.length - 1; i++) {
-            score = 1;
             for (int j = 0; j < arr.length; j++) {
                 if ((field[i][j] == field[i + 1][j]) && (field[i][j] == Piece.Y)) {
                     score++;
+                } else {
+                    score = 1;
                 }
             }
         }
