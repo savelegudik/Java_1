@@ -57,14 +57,14 @@ public class Game {
             System.out.println("Y winnn ByRow");
             finish = true;
         }
-//            if (field.checkWinByDiagonal(arr) == Piece.X) {
-//                System.out.println("X winnn ByDiagonal");
-//                finish = true;
-//            }
-//            if (field.checkWinByDiagonal(arr) == Piece.Y) {
-//                System.out.println("Y winnn ByDiagonal");
-//                finish = true;
-//            }
+        if (field.checkWinByDiagonal(arr) == Piece.X) {
+            System.out.println("X winnn ByDiagonal");
+            finish = true;
+        }
+        if (field.checkWinByDiagonal(arr) == Piece.Y) {
+            System.out.println("Y winnn ByDiagonal");
+            finish = true;
+        }
         return finish;
     }
 }
