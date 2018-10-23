@@ -15,12 +15,12 @@ public class Game {
     }
 
     public void playing(Field field, Piece[][] arr, Player firstPlayer, Player secondPlayer, Player currentPlayer) {
-//        System.out.println("It is a game field:");
-//        System.out.println();
+        System.out.println("It is a game field:");
+        System.out.println();
         field.showField(arr, field);
-//        System.out.println("You should choose a column, where to insert your piece");
-//        System.out.println("Every step will change a player");
-//        System.out.println();
+        System.out.println("You should choose a column, where to insert your piece");
+        System.out.println("Every step will change a player");
+        System.out.println();
 
         Scanner sc = new Scanner(System.in);
 
@@ -29,6 +29,13 @@ public class Game {
 
             System.out.print("Your step at column: ");
             int a = sc.nextInt();
+
+            if (field.checkColumnForFullness(a, arr)) {
+                System.out.println();
+                System.out.println("Insert in free column!!!");
+                System.out.println();
+                playing(field, arr, firstPlayer, secondPlayer, currentPlayer);
+            }
 
             field.move(a, currentPlayer.piece);
 

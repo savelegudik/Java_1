@@ -28,23 +28,19 @@ public class Field {
             if (field[i][a - 1] == Piece.O) {
                 field[i][a - 1] = piece;
                 break;
-
-            } else {
-                if (checkColumnForFullness(field[0][a - 1])) { //mistake!!!!!!!
-                    break;
-                }
             }
             i--;
         }
         return field;
     }
 
-    public boolean checkColumnForFullness(Piece piece) {
-        if (piece == Piece.X || piece == Piece.Y) {
-            System.out.println();
-            System.out.println("Insert in another column!");
-            System.out.println();
-            return true;
+    public boolean checkColumnForFullness(int a, Piece[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (field[0][a - 1] == Piece.X || field[0][a - 1] == Piece.Y) {
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -52,32 +48,21 @@ public class Field {
     public Piece checkWinByColumn(Piece[][] arr) {
         boolean victoryX = false;
         boolean victoryY = false;
-        int score = 1;
-        for (int i = 0; i < arr.length - 1; i++) {
+        for (int i = 0; i < arr.length - 3; i++) {
             for (int j = 0; j < arr.length; j++) {
-                if ((field[i][j] == field[i + 1][j]) && (field[i][j] == Piece.X)) {
-                    score++;
-                } else {
-                    score = 1;
+                if ((field[i][j] == field[i + 1][j]) && (field[i][j] == field[i + 2][j]) && (field[i][j] == field[i + 3][j]) && (field[i][j] == Piece.X)) {
+                    victoryX = true;
                 }
             }
         }
-        if (score > 3) {
-            victoryX = true;
-        }
-        score = 1;
-        for (int i = 0; i < arr.length - 1; i++) {
+        for (int i = 0; i < arr.length - 3; i++) {
             for (int j = 0; j < arr.length; j++) {
-                if ((field[i][j] == field[i + 1][j]) && (field[i][j] == Piece.Y)) {
-                    score++;
-                } else {
-                    score = 1;
+                if ((field[i][j] == field[i + 1][j]) && (field[i][j] == field[i + 2][j]) && (field[i][j] == field[i + 3][j]) && (field[i][j] == Piece.Y)) {
+                    victoryY = true;
                 }
             }
         }
-        if (score > 3) {
-            victoryY = true;
-        }
+
         Piece winPiece = Piece.O;
         if (victoryX) {
             winPiece = Piece.X;
