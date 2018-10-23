@@ -1,7 +1,5 @@
 package gravitrips;
 
-import java.util.Scanner;
-
 public class Game {
 
     public Player changePlayer(Player firstPlayer, Player secondPlayer, Player currentPlayer) {
@@ -22,54 +20,52 @@ public class Game {
         System.out.println("Every step will change a player");
         System.out.println();
 
-        Scanner sc = new Scanner(System.in);
 
         boolean finish = false;
         while (!finish) {
 
-            System.out.print("Your step at column: ");
-            int a = sc.nextInt();
+            int step = currentPlayer.chooseColumn();
 
-            if (field.checkColumnForFullness(a, arr)) {
+            if (field.checkColumnForFullness(step, arr)) {
                 System.out.println();
                 System.out.println("Insert in free column!!!");
                 System.out.println();
                 playing(field, arr, firstPlayer, secondPlayer, currentPlayer);
             }
 
-            field.move(a, currentPlayer.piece);
+            field.move(step, currentPlayer.piece);
 
             field.showField(arr, field);
 
             finish = isFinish(field, finish, arr);
             currentPlayer = changePlayer(firstPlayer, secondPlayer, currentPlayer);
         }
-        sc.close();
+
     }
 
     public boolean isFinish(Field field, boolean finish, Piece[][] arr) {
         if (field.checkWinByColumn(arr) == Piece.X) {
-            System.out.println("X winnn ByColumn");
+            System.out.println("X win ByColumn");
             finish = true;
         }
         if (field.checkWinByColumn(arr) == Piece.Y) {
-            System.out.println("Y winnn ByColumn");
+            System.out.println("Y win ByColumn");
             finish = true;
         }
         if (field.checkWinByRow(arr) == Piece.X) {
-            System.out.println("X winnn ByRow");
+            System.out.println("X win ByRow");
             finish = true;
         }
         if (field.checkWinByRow(arr) == Piece.Y) {
-            System.out.println("Y winnn ByRow");
+            System.out.println("Y win ByRow");
             finish = true;
         }
         if (field.checkWinByDiagonal(arr) == Piece.X) {
-            System.out.println("X winnn ByDiagonal");
+            System.out.println("X win ByDiagonal");
             finish = true;
         }
         if (field.checkWinByDiagonal(arr) == Piece.Y) {
-            System.out.println("Y winnn ByDiagonal");
+            System.out.println("Y win ByDiagonal");
             finish = true;
         }
         return finish;

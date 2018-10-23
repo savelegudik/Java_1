@@ -6,4 +6,8 @@ public abstract class Player {
     public Piece getPiece() {
         return piece;
     }
+
+    public int chooseColumn() {
+        return 0;
+    }
 }

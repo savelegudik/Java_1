@@ -14,9 +14,11 @@ public class AI extends Player {
         return piece;
     }
 
-    public void move() {
+    @Override
+    public int chooseColumn() {
         Random r = new Random();
-        int n = r.nextInt();
-
+        int step = r.nextInt(6) + 1;
+        System.out.println("AI goes to: " + step);
+        return step;
     }
 }
