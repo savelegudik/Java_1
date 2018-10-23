@@ -12,17 +12,18 @@ public class Field {
         }
     }
 
-    public void showField(Piece[][] arr, Field field) {
+    public boolean checkColumnForFullness(int step, Piece[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
-                System.out.print(field.field[i][j] + "\t");
+                if (field[0][step - 1] == Piece.X || field[0][step - 1] == Piece.Y) {
+                    return true;
+                }
             }
-            System.out.println();
         }
-        System.out.println();
+        return false;
     }
 
-    public Piece[][] move(int step, Piece piece) {
+    public Piece[][] changeField(int step, Piece piece) {
         int i = 5;
         while (i >= 0) {
             if (field[i][step - 1] == Piece.O) {
@@ -34,15 +35,14 @@ public class Field {
         return field;
     }
 
-    public boolean checkColumnForFullness(int step, Piece[][] arr) {
+    public void showField(Piece[][] arr, Field field) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
-                if (field[0][step - 1] == Piece.X || field[0][step - 1] == Piece.Y) {
-                    return true;
-                }
+                System.out.print(field.field[i][j] + "\t");
             }
+            System.out.println();
         }
-        return false;
+        System.out.println();
     }
 
     public Piece checkWinByColumn(Piece[][] arr) {

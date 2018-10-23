@@ -33,7 +33,7 @@ public class Game {
                 playing(field, arr, firstPlayer, secondPlayer, currentPlayer);
             }
 
-            field.move(step, currentPlayer.piece);
+            field.changeField(step, currentPlayer.piece);
 
             field.showField(arr, field);
 
