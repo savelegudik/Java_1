@@ -7,7 +7,5 @@ public abstract class Player {
         return piece;
     }
 
-    public int chooseColumn() {
-        return 0;
-    }
+    public abstract int chooseColumn();
 }
