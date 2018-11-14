@@ -2,6 +2,7 @@ package gravitrips;
 
 public class Field {
     private Piece[][] field;
+    private Piece[][] arr;
 
     public Field(Piece[][] arr) {
         this.field = new Piece[arr.length][arr.length];
@@ -23,7 +24,7 @@ public class Field {
         return false;
     }
 
-    public Piece[][] changeField(int step, Piece piece) {
+    public void changeField(int step, Piece piece) {
         int i = 5;
         while (i >= 0) {
             if (field[i][step - 1] == Piece.O) {
@@ -32,13 +33,12 @@ public class Field {
             }
             i--;
         }
-        return field;
     }
 
-    public void showField(Piece[][] arr, Field field) {
+    public void showField(Piece[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
-                System.out.print(field.field[i][j] + "\t");
+                System.out.print(field[i][j] + "\t");
             }
             System.out.println();
         }

@@ -15,7 +15,7 @@ public class Game {
     public void playing(Field field, Piece[][] arr, Player firstPlayer, Player secondPlayer, Player currentPlayer) {
         System.out.println("It is a game field:");
         System.out.println();
-        field.showField(arr, field);
+        field.showField(arr);
         System.out.println("You should choose a column, where to insert your piece");
         System.out.println("Every step will change a player");
         System.out.println();
@@ -35,7 +35,7 @@ public class Game {
 
             field.changeField(step, currentPlayer.piece);
 
-            field.showField(arr, field);
+            field.showField(arr);
 
             finish = isFinish(field, finish, arr);
             currentPlayer = changePlayer(firstPlayer, secondPlayer, currentPlayer);
