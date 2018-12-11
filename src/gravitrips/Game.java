@@ -37,35 +37,35 @@ public class Game {
 
             field.showField(arr);
 
-            finish = isFinish(field, finish, arr);
+            finish = isFinish(field, finish, arr, currentPlayer);
             currentPlayer = changePlayer(firstPlayer, secondPlayer, currentPlayer);
         }
 
     }
 
-    public boolean isFinish(Field field, boolean finish, Piece[][] arr) {
+    public boolean isFinish(Field field, boolean finish, Piece[][] arr, Player currentPlayer) {
         if (field.checkWinByColumn(arr) == Piece.X) {
-            System.out.println("X win ByColumn");
+            System.out.println(currentPlayer.piece + " win ByColumn");
             finish = true;
         }
         if (field.checkWinByColumn(arr) == Piece.Y) {
-            System.out.println("Y win ByColumn");
+            System.out.println(currentPlayer.piece + " win ByColumn");
             finish = true;
         }
         if (field.checkWinByRow(arr) == Piece.X) {
-            System.out.println("X win ByRow");
+            System.out.println(currentPlayer.piece + " win ByRow");
             finish = true;
         }
         if (field.checkWinByRow(arr) == Piece.Y) {
-            System.out.println("Y win ByRow");
+            System.out.println(currentPlayer.piece + " win ByRow");
             finish = true;
         }
         if (field.checkWinByDiagonal(arr) == Piece.X) {
-            System.out.println("X win ByDiagonal");
+            System.out.println(currentPlayer.piece + " win ByDiagonal");
             finish = true;
         }
         if (field.checkWinByDiagonal(arr) == Piece.Y) {
-            System.out.println("Y win ByDiagonal");
+            System.out.println(currentPlayer.piece + " win ByDiagonal");
             finish = true;
         }
         return finish;
