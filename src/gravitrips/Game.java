@@ -44,29 +44,33 @@ public class Game {
     }
 
     public boolean isFinish(Field field, boolean finish, Piece[][] arr, Player currentPlayer) {
+        String winBy = "";
         if (field.checkWinByColumn(arr) == Piece.X) {
-            System.out.println(currentPlayer.piece + " win ByColumn");
+            winBy = " Win By Column";
             finish = true;
         }
         if (field.checkWinByColumn(arr) == Piece.Y) {
-            System.out.println(currentPlayer.piece + " win ByColumn");
+            winBy = " Win By Column";
             finish = true;
         }
         if (field.checkWinByRow(arr) == Piece.X) {
-            System.out.println(currentPlayer.piece + " win ByRow");
+            winBy = " Win By Row";
             finish = true;
         }
         if (field.checkWinByRow(arr) == Piece.Y) {
-            System.out.println(currentPlayer.piece + " win ByRow");
+            winBy = " Win By Row";
             finish = true;
         }
         if (field.checkWinByDiagonal(arr) == Piece.X) {
-            System.out.println(currentPlayer.piece + " win ByDiagonal");
+            winBy = " Win By Diagonal";
             finish = true;
         }
         if (field.checkWinByDiagonal(arr) == Piece.Y) {
-            System.out.println(currentPlayer.piece + " win ByDiagonal");
+            winBy = " Win By Diagonal";
             finish = true;
+        }
+        if (finish) {
+            System.out.println(currentPlayer.piece + winBy);
         }
         return finish;
     }
