@@ -61,14 +61,7 @@ public class Field {
                 }
             }
         }
-
-        Piece winPiece = Piece.O;
-        if (victoryX) {
-            winPiece = Piece.X;
-        } else if (victoryY) {
-            winPiece = Piece.Y;
-        }
-        return winPiece;
+        return checkWinPiece(victoryX, victoryY);
     }
 
     public Piece checkWinByRow() {
@@ -98,13 +91,7 @@ public class Field {
         if (score > 3) {
             victoryY = true;
         }
-        Piece winPiece = Piece.O;
-        if (victoryX) {
-            winPiece = Piece.X;
-        } else if (victoryY) {
-            winPiece = Piece.Y;
-        }
-        return winPiece;
+        return checkWinPiece(victoryX, victoryY);
     }
 
     public Piece checkWinByDiagonal() {
@@ -138,6 +125,10 @@ public class Field {
                 }
             }
         }
+        return checkWinPiece(victoryX, victoryY);
+    }
+
+    private Piece checkWinPiece(boolean victoryX, boolean victoryY) {
         Piece winPiece = Piece.O;
         if (victoryX) {
             winPiece = Piece.X;
