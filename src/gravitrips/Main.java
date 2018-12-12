@@ -22,6 +22,11 @@ public class Main {
 
         System.out.println();
 
-        game.playing(field, firstPlayer, secondPlayer, currentPlayer);
+        game.setField(field);
+        game.setFirstPlayer(firstPlayer);
+        game.setSecondPlayer(secondPlayer);
+        game.setCurrentPlayer(currentPlayer);
+
+        game.playing();
     }
 }

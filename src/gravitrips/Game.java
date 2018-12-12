@@ -1,8 +1,28 @@
 package gravitrips;
 
 public class Game {
+    private Field field;
+    private Player firstPlayer;
+    private Player secondPlayer;
+    private Player currentPlayer;
 
-    public Player changePlayer(Player firstPlayer, Player secondPlayer, Player currentPlayer) {
+    public void setField(Field field) {
+        this.field = field;
+    }
+
+    public void setFirstPlayer(Player firstPlayer) {
+        this.firstPlayer = firstPlayer;
+    }
+
+    public void setSecondPlayer(Player secondPlayer) {
+        this.secondPlayer = secondPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public Player changePlayer() {
         if (currentPlayer == firstPlayer) {
             currentPlayer = secondPlayer;
             currentPlayer.piece = secondPlayer.getPiece();
@@ -12,8 +32,8 @@ public class Game {
         return currentPlayer;
     }
 
-    public void playing(Field field, Player firstPlayer, Player secondPlayer, Player currentPlayer) {
-        showGameRules(field);
+    public void playing() {
+        showGameRules();
 
         boolean finish = false;
         while (!finish) {
@@ -23,19 +43,19 @@ public class Game {
                 System.out.println();
                 System.out.println("Insert in free column!!!");
                 System.out.println();
-                playing(field, firstPlayer, secondPlayer, currentPlayer);
+                playing();
             }
 
             field.changeField(step, currentPlayer.piece);
 
             field.showField();
 
-            finish = checkWinGame(field, finish, currentPlayer);
-            currentPlayer = changePlayer(firstPlayer, secondPlayer, currentPlayer);
+            finish = checkWinGame(finish);
+            currentPlayer = changePlayer();
         }
     }
 
-    private void showGameRules(Field field) {
+    private void showGameRules() {
         System.out.println("It is a game field:");
         System.out.println();
         field.showField();
@@ -44,7 +64,7 @@ public class Game {
         System.out.println();
     }
 
-    public boolean checkWinGame(Field field, boolean finish, Player currentPlayer) {
+    public boolean checkWinGame(boolean finish) {
         String winBy = "";
         if (field.checkWinByColumn() == Piece.X) {
             winBy = " Win By Column";
