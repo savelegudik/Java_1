@@ -2,7 +2,6 @@ package gravitrips;
 
 public class Field {
     private Piece[][] field;
-    private Piece[][] arr;
 
     public Field(Piece[][] arr) {
         this.field = new Piece[arr.length][arr.length];
@@ -13,9 +12,9 @@ public class Field {
         }
     }
 
-    public boolean checkColumnForFullness(int step, Piece[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
+    public boolean checkColumnForFullness(int step) {
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field.length; j++) {
                 if (field[0][step - 1] == Piece.X || field[0][step - 1] == Piece.Y) {
                     return true;
                 }
@@ -35,9 +34,9 @@ public class Field {
         }
     }
 
-    public void showField(Piece[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
+    public void showField() {
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field.length; j++) {
                 System.out.print(field[i][j] + "\t");
             }
             System.out.println();
@@ -45,18 +44,18 @@ public class Field {
         System.out.println();
     }
 
-    public Piece checkWinByColumn(Piece[][] arr) {
+    public Piece checkWinByColumn() {
         boolean victoryX = false;
         boolean victoryY = false;
-        for (int i = 0; i < arr.length - 3; i++) {
-            for (int j = 0; j < arr.length; j++) {
+        for (int i = 0; i < field.length - 3; i++) {
+            for (int j = 0; j < field.length; j++) {
                 if ((field[i][j] == field[i + 1][j]) && (field[i][j] == field[i + 2][j]) && (field[i][j] == field[i + 3][j]) && (field[i][j] == Piece.X)) {
                     victoryX = true;
                 }
             }
         }
-        for (int i = 0; i < arr.length - 3; i++) {
-            for (int j = 0; j < arr.length; j++) {
+        for (int i = 0; i < field.length - 3; i++) {
+            for (int j = 0; j < field.length; j++) {
                 if ((field[i][j] == field[i + 1][j]) && (field[i][j] == field[i + 2][j]) && (field[i][j] == field[i + 3][j]) && (field[i][j] == Piece.Y)) {
                     victoryY = true;
                 }
@@ -72,13 +71,13 @@ public class Field {
         return winPiece;
     }
 
-    public Piece checkWinByRow(Piece[][] arr) {
+    public Piece checkWinByRow() {
         boolean victoryX = false;
         boolean victoryY = false;
         int score = 1;
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < field.length; i++) {
             score = 1;
-            for (int j = 0; j < arr.length - 1; j++) {
+            for (int j = 0; j < field.length - 1; j++) {
                 if ((field[i][j] == field[i][j + 1]) && (field[i][j] == Piece.X)) {
                     score++;
                 }
@@ -88,9 +87,9 @@ public class Field {
             victoryX = true;
         }
         score = 1;
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < field.length; i++) {
             score = 1;
-            for (int j = 0; j < arr.length - 1; j++) {
+            for (int j = 0; j < field.length - 1; j++) {
                 if ((field[i][j] == field[i][j + 1]) && (field[i][j] == Piece.Y)) {
                     score++;
                 }
@@ -108,32 +107,32 @@ public class Field {
         return winPiece;
     }
 
-    public Piece checkWinByDiagonal(Piece[][] arr) {
+    public Piece checkWinByDiagonal() {
         boolean victoryX = false;
         boolean victoryY = false;
-        for (int i = 0; i < arr.length - 3; i++) {
-            for (int j = 0; j < arr.length - 3; j++) {
+        for (int i = 0; i < field.length - 3; i++) {
+            for (int j = 0; j < field.length - 3; j++) {
                 if ((field[i][j] == field[i + 1][j + 1]) && (field[i][j] == field[i + 2][j + 2]) && (field[i][j] == field[i + 3][j + 3]) && (field[i][j] == Piece.X)) {
                     victoryX = true;
                 }
             }
         }
-        for (int i = 3; i < arr.length; i++) {
-            for (int j = 0; j < arr.length - 3; j++) {
+        for (int i = 3; i < field.length; i++) {
+            for (int j = 0; j < field.length - 3; j++) {
                 if ((field[i][j] == field[i - 1][j + 1]) && (field[i][j] == field[i - 2][j + 2]) && (field[i][j] == field[i - 3][j + 3]) && (field[i][j] == Piece.X)) {
                     victoryX = true;
                 }
             }
         }
-        for (int i = 0; i < arr.length - 3; i++) {
-            for (int j = 0; j < arr.length - 3; j++) {
+        for (int i = 0; i < field.length - 3; i++) {
+            for (int j = 0; j < field.length - 3; j++) {
                 if ((field[i][j] == field[i + 1][j + 1]) && (field[i][j] == field[i + 2][j + 2]) && (field[i][j] == field[i + 3][j + 3]) && (field[i][j] == Piece.Y)) {
                     victoryY = true;
                 }
             }
         }
-        for (int i = 3; i < arr.length; i++) {
-            for (int j = 0; j < arr.length - 3; j++) {
+        for (int i = 3; i < field.length; i++) {
+            for (int j = 0; j < field.length - 3; j++) {
                 if ((field[i][j] == field[i - 1][j + 1]) && (field[i][j] == field[i - 2][j + 2]) && (field[i][j] == field[i - 3][j + 3]) && (field[i][j] == Piece.Y)) {
                     victoryY = true;
                 }

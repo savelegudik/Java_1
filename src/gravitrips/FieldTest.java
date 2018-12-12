@@ -18,7 +18,7 @@ class FieldTest {
 
         Field field = new Field(arr);
 
-        assertEquals(Piece.Y, field.checkWinByColumn(arr));
+        assertEquals(Piece.Y, field.checkWinByColumn());
     }
 
     @Test
@@ -33,7 +33,7 @@ class FieldTest {
 
         Field field = new Field(arr);
 
-        assertEquals(Piece.Y, field.checkWinByRow(arr));
+        assertEquals(Piece.Y, field.checkWinByRow());
     }
 
     @Test
@@ -48,7 +48,7 @@ class FieldTest {
 
         Field field = new Field(arr);
 
-        assertEquals(Piece.Y, field.checkWinByDiagonal(arr));
+        assertEquals(Piece.Y, field.checkWinByDiagonal());
     }
 
     @Test
@@ -63,6 +63,6 @@ class FieldTest {
 
         Field field = new Field(arr);
 
-        assertEquals(Piece.Y, field.checkWinByDiagonal(arr));
+        assertEquals(Piece.Y, field.checkWinByDiagonal());
     }
 }
