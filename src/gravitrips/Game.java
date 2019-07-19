@@ -22,7 +22,7 @@ public class Game {
         this.currentPlayer = currentPlayer;
     }
 
-    public Player changePlayer() {
+    private Player changePlayer() {
         if (currentPlayer == firstPlayer) {
             currentPlayer = secondPlayer;
             currentPlayer.piece = secondPlayer.getPiece();
@@ -64,32 +64,23 @@ public class Game {
         System.out.println();
     }
 
-    public boolean checkWinGame(boolean finish) {
+    private boolean checkWinGame(boolean finish) {
         String winBy = "";
-        if (field.checkWinByColumn() == Piece.X) {
+        if (field.checkWinByColumn() == Piece.X || field.checkWinByColumn() == Piece.Y) {
             winBy = " Win By Column";
             finish = true;
         }
-        if (field.checkWinByColumn() == Piece.Y) {
-            winBy = " Win By Column";
-            finish = true;
-        }
-        if (field.checkWinByRow() == Piece.X) {
+
+        if (field.checkWinByRow() == Piece.X || field.checkWinByRow() == Piece.Y) {
             winBy = " Win By Row";
             finish = true;
         }
-        if (field.checkWinByRow() == Piece.Y) {
-            winBy = " Win By Row";
-            finish = true;
-        }
-        if (field.checkWinByDiagonal() == Piece.X) {
+
+        if (field.checkWinByDiagonal() == Piece.X || field.checkWinByDiagonal() == Piece.Y) {
             winBy = " Win By Diagonal";
             finish = true;
         }
-        if (field.checkWinByDiagonal() == Piece.Y) {
-            winBy = " Win By Diagonal";
-            finish = true;
-        }
+
         if (finish) {
             System.out.println(currentPlayer.piece + winBy);
         }
