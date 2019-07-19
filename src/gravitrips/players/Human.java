@@ -1,4 +1,6 @@
-package gravitrips;
+package gravitrips.players;
+
+import gravitrips.Piece;
 
 import java.util.Scanner;
 
@@ -18,7 +20,6 @@ public class Human extends Player {
     public int chooseColumn() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Your step at column: ");
-        int step = sc.nextInt();
-        return step;
+        return sc.nextInt();
     }
 }

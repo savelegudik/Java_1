@@ -1,4 +1,6 @@
-package gravitrips;
+package gravitrips.players;
+
+import gravitrips.Piece;
 
 import java.util.Random;
 

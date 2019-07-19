@@ -1,7 +1,9 @@
-package gravitrips;
+package gravitrips.players;
+
+import gravitrips.Piece;
 
 public abstract class Player {
-    Piece piece;
+    public Piece piece;
 
     public Piece getPiece() {
         return piece;

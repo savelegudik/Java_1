@@ -1,5 +1,7 @@
 package gravitrips;
 
+import gravitrips.players.Player;
+
 public class Game {
     private Field field;
     private Player firstPlayer;
@@ -22,7 +24,7 @@ public class Game {
         this.currentPlayer = currentPlayer;
     }
 
-    private Player changePlayer() {
+    public Player changePlayer() {
         if (currentPlayer == firstPlayer) {
             currentPlayer = secondPlayer;
             currentPlayer.piece = secondPlayer.getPiece();

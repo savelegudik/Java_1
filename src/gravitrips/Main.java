@@ -1,5 +1,8 @@
 package gravitrips;
 
+import gravitrips.players.Human;
+import gravitrips.players.Player;
+
 public class Main {
     public static void main(String[] args) {
         Piece[][] arr = {
