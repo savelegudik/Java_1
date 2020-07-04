@@ -11,7 +11,6 @@ public class Human extends Player {
         this.piece = piece;
     }
 
-    @Override
     public Piece getPiece() {
         return piece;
     }

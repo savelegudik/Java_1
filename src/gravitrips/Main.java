@@ -21,9 +21,6 @@ public class Main {
         Player secondPlayer = new Human(Piece.Y);
         Player currentPlayer;
         currentPlayer = firstPlayer;
-        currentPlayer.piece = firstPlayer.getPiece();
-
-        System.out.println();
 
         game.setField(field);
         game.setFirstPlayer(firstPlayer);

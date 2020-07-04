@@ -30,6 +30,7 @@ public class Game {
             currentPlayer.piece = secondPlayer.getPiece();
         } else {
             currentPlayer = firstPlayer;
+            currentPlayer.piece = firstPlayer.getPiece();
         }
         return currentPlayer;
     }
@@ -37,6 +38,7 @@ public class Game {
     public void playing() {
         showGameRules();
 
+        currentPlayer.piece = firstPlayer.getPiece();
         boolean finish = false;
         while (!finish) {
             int step = currentPlayer.chooseColumn();
@@ -61,7 +63,7 @@ public class Game {
         System.out.println("It is a game field:");
         System.out.println();
         field.showField();
-        System.out.println("You should choose a column, where to insert your piece");
+        System.out.println("You should choose a column (1 - 6), where to insert your piece");
         System.out.println("Every step will change a player");
         System.out.println();
     }
