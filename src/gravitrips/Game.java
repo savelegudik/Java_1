@@ -27,10 +27,8 @@ public class Game {
     public Player changePlayer() {
         if (currentPlayer == firstPlayer) {
             currentPlayer = secondPlayer;
-            currentPlayer.piece = secondPlayer.getPiece();
         } else {
             currentPlayer = firstPlayer;
-            currentPlayer.piece = firstPlayer.getPiece();
         }
         return currentPlayer;
     }
@@ -47,28 +45,20 @@ public class Game {
                 System.out.println();
                 System.out.println("Insert in free column!!!");
                 System.out.println();
-                playing();
+                step = currentPlayer.chooseColumn();
             }
 
             field.changeField(step, currentPlayer.piece);
 
             field.showField();
 
-            finish = checkWinGame(finish);
+            finish = checkWinGame();
             currentPlayer = changePlayer();
         }
     }
 
-    private void showGameRules() {
-        System.out.println("It is a game field:");
-        System.out.println();
-        field.showField();
-        System.out.println("You should choose a column (1 - 6), where to insert your piece");
-        System.out.println("Every step will change a player");
-        System.out.println();
-    }
-
-    private boolean checkWinGame(boolean finish) {
+    private boolean checkWinGame() {
+        boolean finish = false;
         String winBy = "";
         if (field.checkWinByColumn() == Piece.X || field.checkWinByColumn() == Piece.Y) {
             winBy = " Win By Column";
@@ -89,5 +79,14 @@ public class Game {
             System.out.println(currentPlayer.piece + winBy);
         }
         return finish;
+    }
+
+    private void showGameRules() {
+        System.out.println("It is a game field:");
+        System.out.println();
+        field.showField();
+        System.out.println("You should choose a column (1 - 6), where to insert your piece");
+        System.out.println("Every step will change a player");
+        System.out.println();
     }
 }

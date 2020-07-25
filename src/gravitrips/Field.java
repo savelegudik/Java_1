@@ -3,11 +3,11 @@ package gravitrips;
 public class Field {
     private Piece[][] field;
 
-    public Field(Piece[][] arr) {
-        this.field = new Piece[arr.length][arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                field[i][j] = arr[i][j];
+    public Field() {
+        this.field = new Piece[6][6];
+        for (int i = 0; i < field.length; i++) {
+            for (int j = 0; j < field.length; j++) {
+                field[i][j] = Piece.O;
             }
         }
     }
@@ -45,28 +45,26 @@ public class Field {
     }
 
     public Piece checkWinByColumn() {
-        boolean victoryX = false;
-        boolean victoryY = false;
+        Piece victory = Piece.O;
         for (int i = 0; i < field.length - 3; i++) {
             for (int j = 0; j < field.length; j++) {
                 if ((field[i][j] == field[i + 1][j]) && (field[i][j] == field[i + 2][j]) && (field[i][j] == field[i + 3][j]) && (field[i][j] == Piece.X)) {
-                    victoryX = true;
+                    victory = Piece.X;
                 }
             }
         }
         for (int i = 0; i < field.length - 3; i++) {
             for (int j = 0; j < field.length; j++) {
                 if ((field[i][j] == field[i + 1][j]) && (field[i][j] == field[i + 2][j]) && (field[i][j] == field[i + 3][j]) && (field[i][j] == Piece.Y)) {
-                    victoryY = true;
+                    victory = Piece.Y;
                 }
             }
         }
-        return checkWinPiece(victoryX, victoryY);
+        return victory;
     }
 
     public Piece checkWinByRow() {
-        boolean victoryX = false;
-        boolean victoryY = false;
+        Piece victory = Piece.O;
         int score = 1;
         for (int i = 0; i < field.length; i++) {
             score = 1;
@@ -77,7 +75,7 @@ public class Field {
             }
         }
         if (score > 3) {
-            victoryX = true;
+            victory = Piece.X;
         }
         score = 1;
         for (int i = 0; i < field.length; i++) {
@@ -89,52 +87,41 @@ public class Field {
             }
         }
         if (score > 3) {
-            victoryY = true;
+            victory = Piece.Y;
         }
-        return checkWinPiece(victoryX, victoryY);
+        return victory;
     }
 
     public Piece checkWinByDiagonal() {
-        boolean victoryX = false;
-        boolean victoryY = false;
+        Piece victory = Piece.O;
         for (int i = 0; i < field.length - 3; i++) {
             for (int j = 0; j < field.length - 3; j++) {
                 if ((field[i][j] == field[i + 1][j + 1]) && (field[i][j] == field[i + 2][j + 2]) && (field[i][j] == field[i + 3][j + 3]) && (field[i][j] == Piece.X)) {
-                    victoryX = true;
+                    victory = Piece.X;
                 }
             }
         }
         for (int i = 3; i < field.length; i++) {
             for (int j = 0; j < field.length - 3; j++) {
                 if ((field[i][j] == field[i - 1][j + 1]) && (field[i][j] == field[i - 2][j + 2]) && (field[i][j] == field[i - 3][j + 3]) && (field[i][j] == Piece.X)) {
-                    victoryX = true;
+                    victory = Piece.X;
                 }
             }
         }
         for (int i = 0; i < field.length - 3; i++) {
             for (int j = 0; j < field.length - 3; j++) {
                 if ((field[i][j] == field[i + 1][j + 1]) && (field[i][j] == field[i + 2][j + 2]) && (field[i][j] == field[i + 3][j + 3]) && (field[i][j] == Piece.Y)) {
-                    victoryY = true;
+                    victory = Piece.Y;
                 }
             }
         }
         for (int i = 3; i < field.length; i++) {
             for (int j = 0; j < field.length - 3; j++) {
                 if ((field[i][j] == field[i - 1][j + 1]) && (field[i][j] == field[i - 2][j + 2]) && (field[i][j] == field[i - 3][j + 3]) && (field[i][j] == Piece.Y)) {
-                    victoryY = true;
+                    victory = Piece.Y;
                 }
             }
         }
-        return checkWinPiece(victoryX, victoryY);
-    }
-
-    private Piece checkWinPiece(boolean victoryX, boolean victoryY) {
-        Piece winPiece = Piece.O;
-        if (victoryX) {
-            winPiece = Piece.X;
-        } else if (victoryY) {
-            winPiece = Piece.Y;
-        }
-        return winPiece;
+        return victory;
     }
 }

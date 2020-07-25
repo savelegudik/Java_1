@@ -5,15 +5,9 @@ import gravitrips.Piece;
 import java.util.Random;
 
 public class AI extends Player {
-    private Piece piece;
 
     public AI(Piece piece) {
         this.piece = piece;
-    }
-
-    @Override
-    public Piece getPiece() {
-        return piece;
     }
 
     @Override

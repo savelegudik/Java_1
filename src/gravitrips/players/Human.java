@@ -5,14 +5,9 @@ import gravitrips.Piece;
 import java.util.Scanner;
 
 public class Human extends Player {
-    private Piece piece;
 
     public Human(Piece piece) {
         this.piece = piece;
-    }
-
-    public Piece getPiece() {
-        return piece;
     }
 
     @Override
